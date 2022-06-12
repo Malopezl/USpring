@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html>
-    <head xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
+    <head xmlns:th="http://www.thymeleaf.org"
+          xmlns="http://www.w3.org/1999/xhtml">
         <title>Inicio</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
     </head>
     <body>
         <h1>Inicio</h1>
+        <a th:href="@{/agregar}">Crear Persona</a>
         <div th:if="${personas != null and !personas.empty}">
             <table border=2>
+                <caption>Personas</caption>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Telefono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 <tr th:each="persona : ${personas}">
                     <td th:text="${persona.nombre}">Mostrar Nombre</td>
                     <td th:text="${persona.apellido}">Mostrar Apellido</td>
                     <td th:text="${persona.email}">Mostrar Email</td>
                     <td th:text="${persona.telefono}">Mostrar Telefono</td>
+                    <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"/></td>
+                    <!--<td><a th:href="@{/eliminar/} + ${persona.idPersona}" th:text="Eliminar"/></td>-->
+                    <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="Eliminar"/></td>
                 </tr>
             </table>
         </div>
