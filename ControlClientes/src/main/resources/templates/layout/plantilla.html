@@ -11,7 +11,12 @@
         </header>
 
         <footer th:fragment="footer">
-            <p> [[#{plantilla.pie-pagina}]] <a href="/" target="R">®</a> </p>
+            <div>
+                <br/>
+                <a th:href="@{/(lang=es)}">ES</a> |
+                <a th:href="@{/(lang=en)}">EN</a> |
+                <span> [[#{plantilla.pie-pagina}]] <a href="/" target="R">®</a> </span>
+            </div>
         </footer>
     </body>
 </html>
